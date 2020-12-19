@@ -709,13 +709,15 @@ def contribution_figure(modified_timestamp, store_df_impact):
     return fig, style
 
 
-@app.callback([Output('graph-schedule', 'style'),
-               Output('contribution', 'style')],
+@app.callback([Output('contribution', 'style'),
+               Output('graph-schedule', 'style')],
               [Input('graph-switch-btn', 'n_clicks')],
               [State('graph-schedule', 'style'),
                State('contribution', 'style')],
               prevent_initial_call=True)
 def figure_switch(n_clicks, schedule_style, contribution_style):
+    if n_clicks == 1:
+        return {'display': 'flex', 'animation': 'appear 0.5s ease'}, {'display': 'none'}
     if n_clicks:
         if schedule_style == {'display': 'none'}:
             schedule_style = {'display': 'flex'}
@@ -725,7 +727,7 @@ def figure_switch(n_clicks, schedule_style, contribution_style):
             contribution_style = {'display': 'flex'}
         else:
             contribution_style = {'display': 'none'}
-        return schedule_style, contribution_style
+        return contribution_style, schedule_style
 
 
 # %% Schedule Table
@@ -793,7 +795,7 @@ app.layout = html.Div(
                 ], className='d-flex flex-column align-items-end'),
                 dbc.Tooltip(
                     'Need help on loan terminology? Click to see web article on loan amortization by Investopedia.',
-                    target='info-button', className='info-tooltip', placement='right', ),
+                    target='info-button', placement='right'),
                 html.A([dbc.Button(html.I(className="fa fa-question"), className='info-button', color='dark',
                                    outline=True, id='info-button')],
                        href='https://www.investopedia.com/terms/a/amortization_schedule.asp', target='_blank',
@@ -808,7 +810,7 @@ app.layout = html.Div(
                     html.H1('Calculator', className='display-1 text-nowrap mb-3'),
                     html.P(
                         'Our smart tool helps you manage multiple loans with ease, allowing calculation for '
-                        'up to three loans and three contributons.',
+                        'up to three loans and three contributions.',
                         className='pb-0 pt-3 m-0'),
                     html.P('Enter your loan specs on the left and click submit right now to see your loan schedules!',
                            className='pt-0 pb-2 m-0'),
@@ -818,13 +820,11 @@ app.layout = html.Div(
                         dbc.Button('Reset', color='danger', outline=True, id='reset-button', className='reset-button',
                                    n_clicks=0)
                     ], className="apply-btn-group"),
-
                 ],
                 className='app-title'),
             html.A(html.I(className="fa fa-chevron-down"), href='#row-2-target', style={'display': 'none'},
                    className='go-row-2', id='go-row-2')
         ], className='app-row-1'),
-        dbc.Row(className='blank-row', style={'display': 'none'}),
         dbc.Row(
             [
                 html.A(id='row-2-target', className='anchor-target'),
@@ -833,9 +833,9 @@ app.layout = html.Div(
                     [
                         html.H6('Amortization Schedule and Contribution Impact', className='display-4 row-2-title'),
                         html.P(
-                            "See the interactive chart for amortization schedule of your loan portforlio. "),
+                            "See the interactive chart for amortization schedule of your loan portfolio. "),
                         html.P(
-                            'Receiving contributons for repaying loans? Check or uncheck the contributor boxes to see changes'
+                            'Receiving contributions for repaying loans? Check or uncheck the contributor boxes to see changes'
                             ' of your loan schedules under different combination of contributions, and compare the impact'
                             ' on total interest and loan term among contributors.'),
                         dbc.Button([html.Span('Switch Chart\u00a0'), html.Span(html.I(className="fa fa-caret-right"))],
@@ -850,12 +850,11 @@ app.layout = html.Div(
                             dcc.Graph(id='schedule', figure=go.Figure(), className='graph-schedule')
                         ], style={'display': 'flex'}, id='graph-schedule', className='graph-schedule-wrapper'
                     ),
-                    dcc.Graph(id='contribution', className='graph-contribution', style={'display': 'none'}),
+                    dcc.Graph(id='contribution', figure=go.Figure(), className='graph-contribution', style={'display': 'none'}),
 
                 ], className='graph-container')
             ],
             className='app-row-2', id='row-2', style={'display': 'none'}),
-        dbc.Row(className='blank-row', style={'display': 'none'}),
         dbc.Row(
             [
                 html.A(id='row-3-target', className='anchor-target'),
