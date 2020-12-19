@@ -1,4 +1,4 @@
-# MULTI-LOAN CALCULATOR ![repo-size](https://img.shields.io/github/languages/code-size/sharonytlau/dash-moodquote?&color=<green>) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
+# MULTI-LOAN CALCULATOR ![repo-size](https://img.shields.io/github/languages/code-size/sharonytlau/dash-loan-calculator?&color=<green>) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
 
 <img src="assets/screenshot1.png" alt="screenshot" align=center style="zoom:45%;" />
 
