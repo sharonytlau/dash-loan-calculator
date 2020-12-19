@@ -96,7 +96,7 @@ Now, try it! :rocket:
 
 ## License
 
-Our app is made available under the  [Apache 2.0 License](https://github.com/sharonytlau/moodquote/blob/master/LICENSE).
+Our app is made available under the  [Apache 2.0 License](https://github.com/sharonytlau/dash-loan-calculator/blob/master/LICENSE).
 
 ## Authors
 
