@@ -1,4 +1,4 @@
-# MULTI-LOAN CALCULATOR ![repo-size](https://img.shields.io/github/languages/code-size/sharonytlau/dash-loan-calculator?&color=<green>) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
+# MULTI-LOAN CALCULATOR ![repo-size](https://img.shields.io/github/languages/code-size/sharonytlau/dash-loan-calculator?&color=<green>) ![commit-activity](https://img.shields.io/github/last-commit/sharonytlau/dash-loan-calculator?color=blue) 
 
 <img src="assets/screenshot1.png" alt="screenshot" align=center style="zoom:45%;" />
 
